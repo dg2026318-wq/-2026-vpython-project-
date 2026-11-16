@@ -6,14 +6,17 @@ d2 = box(size=vec(3, 3, 3),pos=vec(-2.4,2.4,-2),texture = "https://encrypted-tbn
 d3 = box(opacity=0)
 ds = [d0,d1,d2,d3]
 box(size=vec(8, 8, 8),opacity = 1, color = vec(0.5,0.25,0))
+l = label(text = 0)
 
-def on_click():
-    print
+def on_click(ds) :
+    global l
+    l.text = int(l.text) + 1
+    
 
 scene.bind('click',on_click)
 
 while True :
-    rate(100)
+    rate(1000)
     k = keysdown()
     rx = random.randint(0,3)
     ds[rx].pos.y = ds[rx].pos.y + 2.7
@@ -21,3 +24,4 @@ while True :
     ds[rx].pos.y = ds[rx].pos.y - 2.7
     sleep(0.3)
     print(rx)
+
